@@ -1,0 +1,112 @@
+body {
+	background-image: url('../images/distressed_flag_edit.jpg');
+	background-size: auto;
+	background-repeat: no-repeat;
+}
+
+#startButton {
+	height: 100vh;
+	width: 100%;
+	text-align: center;
+}
+
+#startButton li {
+	float: left;
+	height: 100vh;
+	width: 33%;
+	line-height: 100vh;
+}
+
+#startQuiz {
+	width: 250px;
+	height: 150px;
+	border: none;
+	border-radius: 10px;
+	background-color: #3C070F;
+	font-family: 'Meddon', cursive;
+	font-size: 2em;
+	color: white;
+	margin: 0 auto;
+}
+
+#quizPaper {
+	display:none;
+	height: 100vh;
+	width: 100%;
+	text-align:center;
+	overflow: hidden;
+}
+
+#quizPaper > li{
+	float: left;
+	height: 100vh;
+	line-height: 100vh;
+	margin: 0 10px;
+}
+
+#quizPaper > li:nth-child(odd) {
+	width: 15%;
+}
+
+#paper {
+	background-image: url('../images/parchment.jpg');
+	background-repeat: no-repeat;
+	height: 100vh;
+	width: 65%;
+	margin: 0 auto;
+	height: 100vh;
+	font-family: 'Meddon', cursive;
+}
+
+#questionSection h1, #questionSection h3 {
+	line-height: 30px;
+	margin: 1em 0;
+	font-size: 2em;
+	text-align: center;
+}
+
+#questionSection h3 {
+	line-height: 50px;
+}
+
+#quizChoices {
+	width:100%;
+	text-align: left;
+	line-height: 50px;
+	margin: 0 auto;
+	font-size: 1.4em;
+	padding: 0 2em;
+}
+
+#quizChoices li input {
+	margin-right: 1.5em;
+}
+
+#submitAnswer {
+	width: 150px;
+	height: 50px;
+	border: none;
+	border-radius: 5px;
+	background-color: #3C070F;
+	font-family: 'Meddon', cursive;
+	font-size: 1em;
+	color: white;
+	margin: 10px auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
