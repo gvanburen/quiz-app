@@ -52,20 +52,34 @@ $(document).ready(function(){
 		]
 	];
 
-	$('#submitAnswer').click(function(){
-		alert(first.number);
-		alert(first.question);
-	});
-
 	function askQuestion(question, one, two, three, four, answer){
-		this.question = question;
-		this.one = one;
-		this.two = two;
-		this.three = three;
-		this.four = four;
-		this.answer = answer;
-	};
+		
+		this.UL = $('#quizChoices');
 
+		this.question = question;
+		this.UL.append('<h3 id="actualQuestion">' + this.question + '</h3>');
+
+		this.one = one;
+		this.UL.append('<li><input type="checkbox">' + this.one + '</input></li>');
+
+		this.two = two;
+		this.UL.append('<li><input type="checkbox">' + this.two + '</input></li>');
+		
+		this.three = three;
+		this.UL.append('<li><input type="checkbox">' + this.three + '</input></li>');
+
+		this.four = four;
+		this.UL.append('<li><input type="checkbox">' + this.four + '</input></li>');
+
+		this.UL.append('<li><button id="submitAnswer">Submit</button></li>')
+
+		this.answer = answer;
+
+		this.displayQuestion = $(this).hide();
+
+	};
+	
+	//Create Instances of the Question 
 	var first = new askQuestion (qA[0][0], qA[1][0],qA[1][1],
 		qA[1][2],qA[1][3],qA[6][0]);
 	var second = new askQuestion (qA[0][1],qA[2][0],qA[2][1],
@@ -76,22 +90,17 @@ $(document).ready(function(){
 		qA[4][2],qA[4][3],qA[6][3]);
 	var fifth = new askQuestion (qA[0][4],qA[5][0],qA[5][1],
 		qA[5][2],qA[5][3],qA[6][4]);
+	var questions = [first, second, third, fourth, fifth];
 
-	console.log(first);
-	
-	// function askQuestion(question){
-	// 	var answer = $('#checkBoxId').checked;//checkbox value;
-	// 		if(answer == question[0][1]) {
-	// 			alert('Correct');
-	//  			score++
-	//  		} else {
-	//  			alert('Sorry. The correct answer is ' + question[0][1]);
-	//  		}
-	// }
-
-	// for (var i=0, i < questionsAnswers.length, i++) {
-	// 	askQuestion(questionsAnswers[i]);
-	// };
+	//On click hide current array value and show the next
+	$('#submitAnswer').click(function(event){
+		event.preventDefault();
+		//Check answer
+		var answer = $('input:checked').val();
+		if (answer = questions[0].answer){
+			alert("yes!")
+		};
+	});
 
 	// var message = 'You got ' + score;
 	// message += ' out of ' + questions.length;
