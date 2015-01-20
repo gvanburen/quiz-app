@@ -1,8 +1,44 @@
 $(document).ready(function(){
-	$('#startQuiz').click(function(){
-		$('#startButton').css('display','none');
-		$('#quizPaper').css('display','block');
+	//Click on the start button to start the game
+	$('#startQuiz').click(function(event){
+		event.preventDefault();
+		startQuiz();
 	});
+
+
+	function startQuiz() {
+		//Clear the screen and display the quiz
+		$('#startButton').hide();
+		$('#quizPaper').show();
+	
+		//Display one question at a time
+		
+		//Checks answers against correct answer
+		$('#submitAnswer').click(function(event){
+			event.preventDefault();
+			//Check answer
+			
+			var answerLong = $('input:checked').parent().html();
+			var answer = answerLong.replace('<input type="checkbox">','');
+			if (answer == questions[i].answer){
+				alert("Correct!")
+			} else {
+				alert("Incorrect")
+			};
+		});
+		/*After clicking submit button
+		- Hide the current question
+		- Display the next question
+		*/
+
+	};
+
+	
+
+
+
+
+
 
 	var qA = [
 		[
@@ -93,14 +129,14 @@ $(document).ready(function(){
 	var questions = [first, second, third, fourth, fifth];
 
 	//On click hide current array value and show the next
-	$('#submitAnswer').click(function(event){
-		event.preventDefault();
-		//Check answer
-		var answer = $('input:checked').val();
-		if (answer = questions[0].answer){
-			alert("yes!")
-		};
-	});
+	// $('#submitAnswer').click(function(event){
+	// 	event.preventDefault();
+	// 	//Check answer
+	// 	var answer = $('input:checked').val();
+	// 	if (answer == questions[0].answer){
+	// 		alert("yes!")
+	// 	};
+	// });
 
 	// var message = 'You got ' + score;
 	// message += ' out of ' + questions.length;
