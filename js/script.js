@@ -1,31 +1,5 @@
 $(document).ready(function(){
-	$('#startQuiz').click(function(){
-		$('#startButton').hide();
-		$('#quizPaper').show();
-		newGame();
-	});
-
-	function newGame() {
-		var newQuestion = '<li><h3 id="actualQuestion">' + qA[0].question + '</h3></li><li><input type="checkbox">' + qA[0].answers[0] + '</input></li><li><input type="checkbox">' + qA[0].answers[1] + '</input></li><li><input type="checkbox">' + qA[0].answers[2] + '</input></li><li><input type="checkbox">' + qA[0].answers[3] + '</input></li><li><button id="submitAnswer">Submit</button></li>';
-		$('#quizChoices').html(newQuestion);
-	};
-	
-	//Question
-	$('#submitAnswer').click(function(){
-			alert("You clicked");
-			checkAnswer();
-	});
-
-	function checkAnswer() {
-		var answerLong = $('input:checked').parent().html();
-		var answer = answerLong.replace('<input type="checkbox">','');
-		if (answer == qA[0].answer){
-			alert("Correct!")
-		} else {
-			alert("Incorrect")
-		};
-	};
-
+	//Setting question and answer variables
 	var qA = [
 		{
 		question: 'Who was the first president?',
@@ -79,6 +53,57 @@ $(document).ready(function(){
 		}
 	];
 
-	console.log(qA[0].question);
-	console.log(qA[0].answers[0])
+	var i = 0;
+	var score = 0;
+
+	$('#startQuiz').click(function(){
+		$('#startButton').hide();
+		$('#quizPaper').show();
+		nextQuestion();
+	});
+
+	$(document).on('click', '#submitAnswer', function(){
+		checkAnswer();
+		nextQuestion();
+	});
+
+	$(document).on('click', '#tryAgain', function(){
+		location.reload();
+	});
+
+	function nextQuestion() {
+		if (i==0){
+			$('#quizChoices li').remove();
+			var newQuestion = '<li><h3 id="actualQuestion">' + qA[i].question + '</h3></li><li><input type="checkbox" value="0">' + qA[i].answers[0] + '</input></li><li><input type="checkbox" value="1">' + qA[i].answers[1] + '</input></li><li><input type="checkbox" value="2">' + qA[i].answers[2] + '</input></li><li><input type="checkbox" value="3">' + qA[i].answers[3] + '</input></li><li><button id="submitAnswer">Submit</button></li>';
+			$('#quizChoices').html(newQuestion);
+		} else if (i<5) {
+			$('#quizChoices li').remove();
+			var newQuestion = '<li><h3 id="actualQuestion">' + qA[i].question + '</h3></li><li><input type="checkbox" value="0">' + qA[i].answers[0] + '</input></li><li><input type="checkbox" value="1">' + qA[i].answers[1] + '</input></li><li><input type="checkbox" value="2">' + qA[i].answers[2] + '</input></li><li><input type="checkbox" value="3">' + qA[i].answers[3] + '</input></li><li><button id="submitAnswer">Submit</button></li>';
+			$('#quizChoices').html(newQuestion);
+		} else {
+			$('#quizChoices li').remove();
+			$('#score h3').remove();
+			var displayScore = '<li><h3 id="finalScore">You got ' + score + ' out of 5 questions correct!</h3></li><li id="centerButton"><button id="tryAgain">Try Again</button></li>';
+			$('#quizChoices').html(displayScore);
+		};
+	};
+
+	function checkAnswer() {
+		var answer = $('input:checked').val();
+		if (answer == qA[i].correct){
+			score++;
+			updateScore();
+			i++;
+		} else {
+			updateScore();
+			i++;
+		};
+	};
+
+	function updateScore(){
+		$('#score h3').remove();
+		var yourScore = '<h3 id="yourScore">Correct:</br>' + score + ' / ' + (i+1);
+		$('#score').append(yourScore);
+	};
+
 });

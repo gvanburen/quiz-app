@@ -97,19 +97,38 @@ body {
 	margin: 10px auto;
 }
 
+#yourScore {
+	font-family: 'Meddon', cursive;
+	font-size: 1em;
+	color: white;
+	margin-top: .5em;
+	line-height: 10vh;
+}
 
+#quizChoices #finalScore {
+	text-align:center;
+}
 
+#finalScore {
+	font-size: 2em;
+	text-align: center;
+	margin: 1em 0.25em 1em 0;
+}
 
+#centerButton {
+	text-align:center;
+	margin: 0 auto;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+#tryAgain {
+	width: 200px;
+	height: 70px;
+	border: none;
+	border-radius: 10px;
+	background-color: #3C070F;
+	font-family: 'Meddon', cursive;
+	font-size: 1.2em;
+	color: white;
+	margin: 0 auto;
+}
 
