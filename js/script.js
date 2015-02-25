@@ -34,10 +34,10 @@ $(document).ready(function(){
 		{
 		question: 'How many presidents have been assassinated while in office?',
 		answers: [
-		'1',
-		'2',
-		'3',
-		'4'
+		'One',
+		'Two',
+		'Three',
+		'Four'
 		],
 		correct: 3
 		},
